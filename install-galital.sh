@@ -6,7 +6,7 @@ read -p "Enter Galital node name: " GALITAL_NODENAME
 
 echo 'Galital node starting install...'
 
-sudo apt update && sudo apt upgrade -y < "/dev/null"
+sudo apt update && sudo apt upgrade -y
 sudo ntpq -p
 sudo apt install -y ufw curl chrony 
 sudo systemctl enable chrony
