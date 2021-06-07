@@ -56,6 +56,9 @@ echo 'Waiting Galital Validator to start... Press Ctrl+C when ready'
 sleep 3
 
 journalctl -u galital | grep "Local node identity is: " | awk -F "[, ]+" '/Local node identity is: /{print $NF}' > galital_node_id.txt
+echo 'Your local node identity saved to galital_node_id.txt'
 
-echo 'Your local node identity saved to galital_node_id.txt file'
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "author_rotateKeys", "params":[]}' http://localhost:9933 | awk -F"," '{print $2}' | awk -F":" '{print $2}' | awk '{print substr($0, 2, length($0) - 2)}' > galital_session_key.txt
+echo 'Your session key saved to galital_session_key.txt'
+
 journalctl -u galital -f
