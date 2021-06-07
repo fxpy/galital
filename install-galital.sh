@@ -8,7 +8,7 @@ echo 'Galital node starting install...'
 
 sudo apt update && sudo apt upgrade -y < "/dev/null"
 sudo ntpq -p
-sudo apt install -y ufw chrony 
+sudo apt install -y ufw curl chrony 
 sudo systemctl enable chrony
 sudo apt install -y fail2ban
 sudo systemctl enable fail2ban
